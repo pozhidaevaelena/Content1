@@ -11,7 +11,7 @@ export const generateAnalysis = async (niche: string): Promise<AnalysisData> => 
   Определи, какой контент получает больше всего откликов.`;
 
   const response = await ai.models.generateContent({
-    model: 'gemini-3-flash-preview',
+    model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
       tools: [{ googleSearch: {} }],
@@ -19,7 +19,7 @@ export const generateAnalysis = async (niche: string): Promise<AnalysisData> => 
   });
 
   const structuredResponse = await ai.models.generateContent({
-    model: 'gemini-3-flash-preview',
+    model: 'gemini-2.5-flash',
     contents: `Преврати этот анализ в JSON объект с полями: 
     competitors (массив), 
     trends (массив), 
@@ -105,7 +105,7 @@ export const editPostContent = async (post: Post, feedback: string): Promise<Pos
   Верни обновленный JSON объект с полями content и script.`;
 
   const response = await ai.models.generateContent({
-    model: 'gemini-3-flash-preview',
+    model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
       responseMimeType: "application/json",
